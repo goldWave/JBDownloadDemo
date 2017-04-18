@@ -88,7 +88,6 @@
     
 }
 - (void)deleteDownData:(MyDownData *)downData {
-#warning [downData.downTask cancel];
     @synchronized (self) {
         [_downDatas removeObject:downData];
         [downData.downTask cancel];
@@ -162,9 +161,7 @@
 
 //请求结束，如果错误，error != nil
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    
-    
-#warning NSURLSessionTask VS NSURLSessionDataTask
+
     for (int i = 0; i < _downDatas.count; i ++) {
         MyDownData *downData = _downDatas[i];
         if (![task isEqual:downData.downTask]) {
@@ -212,7 +209,6 @@
 
 - (NSURLSession *)session {
     if (!_session) {
-#warning _queue VS [NSOperationQueue mainQueue] 
         //接收到通知的回调在哪个线程中调用，如果传mainQueue则通知在主线程回调，否则在子线程回调
         _queue = [[NSOperationQueue alloc] init];
         _queue.maxConcurrentOperationCount = 1;

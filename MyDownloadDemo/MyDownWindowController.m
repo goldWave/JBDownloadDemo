@@ -110,7 +110,6 @@
 
 #pragma mark - MyDownTableCellView Delegate
 - (void)pauseBtnDidClickedWithData:(MyDownData *)downData {
-#warning reload only one row
     [downData.downTask cancel];
     downData.status = MyDownStatusPause;
     [self.downTableView  reloadData];
