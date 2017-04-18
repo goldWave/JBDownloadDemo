@@ -7,16 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "MyDownWindowController.h"
+
 
 @interface AppDelegate ()
-
+{
+    MyDownWindowController *_downWC;
+}
 @property (weak) IBOutlet NSWindow *window;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+
+    
+    _downWC = [[MyDownWindowController alloc] init];
+    self.window = _downWC.window;
+
+    
 }
 
 

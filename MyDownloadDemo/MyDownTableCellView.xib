@@ -1,15 +1,140 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="MyDownTableCellView">
+            <connections>
+                <outlet property="nameTextField" destination="HYh-2l-rZV" id="c4x-Mo-LqV"/>
+                <outlet property="progressIndictor" destination="xdI-BI-bnp" id="beT-wG-xgh"/>
+                <outlet property="progressTextField" destination="uqV-33-o4j" id="uLP-ht-6dG"/>
+                <outlet property="startBtn" destination="DEP-Pk-22y" id="Pe5-l8-yUa"/>
+                <outlet property="statusTextFiled" destination="7VV-Cb-gkg" id="eVW-Uc-R3P"/>
+                <outlet property="stopBtn" destination="AXy-HA-zp0" id="Snj-Ak-QGc"/>
+                <outlet property="totalDataTextField" destination="fcV-QP-iA6" id="qHA-rs-pBv"/>
+                <outlet property="view" destination="c22-O7-iKe" id="nMr-bw-6He"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="689" height="101"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pFS-5s-paF">
+                    <rect key="frame" x="95" y="8" width="5" height="73"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FwJ-IZ-ktQ">
+                    <rect key="frame" x="20" y="27" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="apple" id="yVf-US-qzY"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYh-2l-rZV">
+                    <rect key="frame" x="131" y="54" width="364" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="360" id="5S0-DW-3Qx"/>
+                        <constraint firstAttribute="height" constant="27" id="TaA-zn-aca"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Xkc-cO-7vA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcV-QP-iA6">
+                    <rect key="frame" x="132" y="29" width="87" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10.22MB" id="iBG-As-KbK">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="xdI-BI-bnp">
+                    <rect key="frame" x="134" y="7" width="522" height="20"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqV-33-o4j">
+                    <rect key="frame" x="214" y="27" width="120" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="OWd-Fk-jKE">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VV-Cb-gkg">
+                    <rect key="frame" x="521" y="29" width="137" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="BVp-8U-nPF">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AXy-HA-zp0">
+                    <rect key="frame" x="524" y="55" width="92" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="7eV-ta-f1N"/>
+                        <constraint firstAttribute="height" constant="21" id="Pay-Jd-sVB"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="暂停" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w3b-6A-FP4">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="stopBtnClick:" target="-2" id="btO-u7-2kF"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DEP-Pk-22y">
+                    <rect key="frame" x="524" y="55" width="92" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="AF6-Cv-oTS"/>
+                        <constraint firstAttribute="height" constant="21" id="rMi-1v-z8p"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="下载" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2ng-Ud-f5M">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" size="13" name=".PingFangSC-Regular"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="resumeBtnClick:" target="-2" id="b8I-y4-LaR"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uw9-LM-K1z">
+                    <rect key="frame" x="630" y="61" width="26" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="Viq-Jx-mWA"/>
+                        <constraint firstAttribute="height" constant="21" id="uHS-dy-RPe"/>
+                    </constraints>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTrashFull" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l3R-z6-nKY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="deleteBtnClick:" target="-2" id="Dop-nP-UOy"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="DEP-Pk-22y" firstAttribute="trailing" secondItem="AXy-HA-zp0" secondAttribute="trailing" id="2ms-dB-ScZ"/>
+                <constraint firstAttribute="trailing" secondItem="Uw9-LM-K1z" secondAttribute="trailing" constant="33" id="557-4v-Z9E"/>
+                <constraint firstItem="HYh-2l-rZV" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="AzD-fg-IyY"/>
+                <constraint firstItem="Uw9-LM-K1z" firstAttribute="leading" secondItem="DEP-Pk-22y" secondAttribute="trailing" constant="20" id="DtY-C4-lmZ"/>
+                <constraint firstItem="DEP-Pk-22y" firstAttribute="height" secondItem="AXy-HA-zp0" secondAttribute="height" id="PIW-aW-AWd"/>
+                <constraint firstItem="HYh-2l-rZV" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="133" id="T5i-lB-OUX"/>
+                <constraint firstItem="Uw9-LM-K1z" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="18" id="WQA-eU-ngL"/>
+                <constraint firstItem="Uw9-LM-K1z" firstAttribute="top" secondItem="AXy-HA-zp0" secondAttribute="top" id="gv2-Ax-9MT"/>
+                <constraint firstItem="DEP-Pk-22y" firstAttribute="width" secondItem="AXy-HA-zp0" secondAttribute="width" id="qeq-MA-Vr5"/>
+                <constraint firstItem="DEP-Pk-22y" firstAttribute="top" secondItem="AXy-HA-zp0" secondAttribute="top" id="u87-FK-Ggn"/>
+            </constraints>
+            <point key="canvasLocation" x="36.5" y="49.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="NSTrashFull" width="32" height="32"/>
+        <image name="apple" width="204" height="204"/>
+    </resources>
 </document>

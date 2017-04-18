@@ -10,4 +10,8 @@
 
 @interface MyDownloadUtility : NSObject
 
++ (NSString *)calculateFileSizeAndUnit:(int64_t)contentLength;
+
++ (NSString *)renameDownLoadFileWithFileName:(NSString *)fileName filePath:(NSString *)filePath fileManager:(NSFileManager *)fileManager;
+
 @end

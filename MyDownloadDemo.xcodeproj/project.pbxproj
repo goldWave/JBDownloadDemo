@@ -7,13 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A30DCB71E89FEEF006E2293 /* MyDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A30DCB61E89FEEF006E2293 /* MyDownloadManager.m */; };
+		4AC8408B1EA5F7720043B947 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC8408A1EA5F7720043B947 /* image.png */; };
 		4ADD54581E84F14400C9B65C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54571E84F14400C9B65C /* AppDelegate.m */; };
 		4ADD545B1E84F14400C9B65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD545A1E84F14400C9B65C /* main.m */; };
 		4ADD545D1E84F14400C9B65C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD545C1E84F14400C9B65C /* Assets.xcassets */; };
 		4ADD54601E84F14400C9B65C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD545E1E84F14400C9B65C /* MainMenu.xib */; };
+		4ADD54821E88B4DF00C9B65C /* MyDownTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD54811E88B4DF00C9B65C /* MyDownTableCellView.m */; };
+		4ADD54841E88B4EB00C9B65C /* MyDownTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ADD54831E88B4EB00C9B65C /* MyDownTableCellView.xib */; };
+		4AEB00161E88FED900A0D5BD /* MyDownWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEB00141E88FED900A0D5BD /* MyDownWindowController.m */; };
+		4AEB00171E88FED900A0D5BD /* MyDownWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AEB00151E88FED900A0D5BD /* MyDownWindowController.xib */; };
+		4AEF613E1E8A5B6800C0D404 /* MyDownData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF613D1E8A5B6800C0D404 /* MyDownData.m */; };
+		4AEF61411E8A609A00C0D404 /* LYBaseDesriptionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF61401E8A609A00C0D404 /* LYBaseDesriptionModel.m */; };
+		4AEF61751E8B93CF00C0D404 /* MyDownloadUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF61741E8B93CF00C0D404 /* MyDownloadUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A30DCB51E89FEEF006E2293 /* MyDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownloadManager.h; sourceTree = "<group>"; };
+		4A30DCB61E89FEEF006E2293 /* MyDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownloadManager.m; sourceTree = "<group>"; };
+		4AC8408A1EA5F7720043B947 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		4ADD54531E84F14400C9B65C /* MyDownloadDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDownloadDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ADD54561E84F14400C9B65C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4ADD54571E84F14400C9B65C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -21,6 +33,19 @@
 		4ADD545C1E84F14400C9B65C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ADD545F1E84F14400C9B65C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		4ADD54611E84F14400C9B65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ADD54711E850C3000C9B65C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		4ADD54801E88B4DF00C9B65C /* MyDownTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownTableCellView.h; sourceTree = "<group>"; };
+		4ADD54811E88B4DF00C9B65C /* MyDownTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownTableCellView.m; sourceTree = "<group>"; };
+		4ADD54831E88B4EB00C9B65C /* MyDownTableCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDownTableCellView.xib; sourceTree = "<group>"; };
+		4AEB00131E88FED900A0D5BD /* MyDownWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownWindowController.h; sourceTree = "<group>"; };
+		4AEB00141E88FED900A0D5BD /* MyDownWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownWindowController.m; sourceTree = "<group>"; };
+		4AEB00151E88FED900A0D5BD /* MyDownWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyDownWindowController.xib; sourceTree = "<group>"; };
+		4AEF613C1E8A5B6800C0D404 /* MyDownData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownData.h; sourceTree = "<group>"; };
+		4AEF613D1E8A5B6800C0D404 /* MyDownData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownData.m; sourceTree = "<group>"; };
+		4AEF613F1E8A609A00C0D404 /* LYBaseDesriptionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYBaseDesriptionModel.h; sourceTree = "<group>"; };
+		4AEF61401E8A609A00C0D404 /* LYBaseDesriptionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYBaseDesriptionModel.m; sourceTree = "<group>"; };
+		4AEF61731E8B93CF00C0D404 /* MyDownloadUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDownloadUtility.h; sourceTree = "<group>"; };
+		4AEF61741E8B93CF00C0D404 /* MyDownloadUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDownloadUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +80,25 @@
 			children = (
 				4ADD54561E84F14400C9B65C /* AppDelegate.h */,
 				4ADD54571E84F14400C9B65C /* AppDelegate.m */,
+				4AEB00131E88FED900A0D5BD /* MyDownWindowController.h */,
+				4AEB00141E88FED900A0D5BD /* MyDownWindowController.m */,
+				4AEB00151E88FED900A0D5BD /* MyDownWindowController.xib */,
+				4ADD54801E88B4DF00C9B65C /* MyDownTableCellView.h */,
+				4ADD54811E88B4DF00C9B65C /* MyDownTableCellView.m */,
+				4ADD54831E88B4EB00C9B65C /* MyDownTableCellView.xib */,
+				4A30DCB51E89FEEF006E2293 /* MyDownloadManager.h */,
+				4A30DCB61E89FEEF006E2293 /* MyDownloadManager.m */,
+				4AEF61731E8B93CF00C0D404 /* MyDownloadUtility.h */,
+				4AEF61741E8B93CF00C0D404 /* MyDownloadUtility.m */,
+				4AEF613C1E8A5B6800C0D404 /* MyDownData.h */,
+				4AEF613D1E8A5B6800C0D404 /* MyDownData.m */,
 				4ADD545C1E84F14400C9B65C /* Assets.xcassets */,
 				4ADD545E1E84F14400C9B65C /* MainMenu.xib */,
 				4ADD54611E84F14400C9B65C /* Info.plist */,
+				4AC8408A1EA5F7720043B947 /* image.png */,
+				4ADD54711E850C3000C9B65C /* PrefixHeader.pch */,
+				4AEF613F1E8A609A00C0D404 /* LYBaseDesriptionModel.h */,
+				4AEF61401E8A609A00C0D404 /* LYBaseDesriptionModel.m */,
 				4ADD54591E84F14400C9B65C /* Supporting Files */,
 			);
 			path = MyDownloadDemo;
@@ -129,8 +170,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC8408B1EA5F7720043B947 /* image.png in Resources */,
 				4ADD545D1E84F14400C9B65C /* Assets.xcassets in Resources */,
+				4ADD54841E88B4EB00C9B65C /* MyDownTableCellView.xib in Resources */,
 				4ADD54601E84F14400C9B65C /* MainMenu.xib in Resources */,
+				4AEB00171E88FED900A0D5BD /* MyDownWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEF61751E8B93CF00C0D404 /* MyDownloadUtility.m in Sources */,
 				4ADD545B1E84F14400C9B65C /* main.m in Sources */,
+				4AEF613E1E8A5B6800C0D404 /* MyDownData.m in Sources */,
+				4AEF61411E8A609A00C0D404 /* LYBaseDesriptionModel.m in Sources */,
+				4ADD54821E88B4DF00C9B65C /* MyDownTableCellView.m in Sources */,
+				4A30DCB71E89FEEF006E2293 /* MyDownloadManager.m in Sources */,
 				4ADD54581E84F14400C9B65C /* AppDelegate.m in Sources */,
+				4AEB00161E88FED900A0D5BD /* MyDownWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,8 +302,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MyDownloadDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = MyDownloadDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jimbo.com.MyDownloadDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -264,8 +317,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = MyDownloadDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = MyDownloadDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jimbo.com.MyDownloadDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,6 +346,7 @@
 				4ADD54661E84F14400C9B65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

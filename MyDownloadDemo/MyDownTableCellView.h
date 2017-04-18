@@ -8,6 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+
+@protocol MyDownTableCellViewDelegate <NSObject>
+
+- (void)pauseBtnDidClickedWithData:(MyDownData *)downData;
+- (void)resumeBtnDidClickedWithData:(MyDownData *)downData;
+- (void)deleteBtnDidClickedWithData:(MyDownData *)downData;
+
+@end
+
 @interface MyDownTableCellView : NSTableCellView
+
+@property (nonatomic) MyDownData *data;
+
+@property (nonatomic, weak) id<MyDownTableCellViewDelegate>delegate;
 
 @end

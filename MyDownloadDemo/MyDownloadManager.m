@@ -46,13 +46,12 @@
 
 #pragma mark - urlsession
 
-- (void)downBySandboxWithData:(MyDownData *)downData {
+- (void)continueDownData:(MyDownData *)downData {
     
-    //new task
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:downData.identifier]];
     
-    // 设置请求头
-    NSString *range = [NSString stringWithFormat:@"bytes=%zd-", downData.currentSize];
+    // 设置请求头 断点续传
+    NSString *range = [NSString stringWithFormat:@"bytes=%zd-", [self caculateFileSizeWithPath:downData.downLoadPath]];
     [request setValue:range forHTTPHeaderField:@"Range"];
     
     //create request
@@ -60,11 +59,13 @@
     
     downData.status = MyDownStatusRepare;
     
+    downData.isFromDisk = YES;
+    
     [downData.downTask  resume];
     
 }
 
-- (void)addDownloadWithUrlStr:(NSString *)urlStr {
+- (void)addNewDownloadWithUrlStr:(NSString *)urlStr {
     //new task
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
     
@@ -75,15 +76,27 @@
     //create request
     data.downTask = [self.session dataTaskWithRequest:request];
     
-    //[_myData removeAllObjects];
     data.identifier = urlStr;
     data.progress = 0;
     data.status = MyDownStatusRepare;
+    data.isFromDisk = NO;
     
-    data.downLoadPath = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"111"];
+    
+    data.downLoadPath = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"download"];
     
     [data.downTask resume];
     
+}
+- (void)deleteDownData:(MyDownData *)downData {
+#warning [downData.downTask cancel];
+    @synchronized (self) {
+        [_downDatas removeObject:downData];
+        [downData.downTask cancel];
+        [downData.outStream close];
+        downData.outStream = nil;
+        downData.downTask = nil;
+        [self wirteToSandboxPlist];
+    }
 }
 
 #pragma mark - NSURLSession Data Task delegate
@@ -98,15 +111,15 @@
             continue ;
         }
         if (downData.totalSize <= 0) downData.totalSize = response.expectedContentLength;
-        downData.name = response.suggestedFilename;
         
-        [self renameDownLoadFileWithData:downData];
+        //新添加的下载项目
+        if (!downData.isFromDisk) {
+            downData.name =  [MyDownloadUtility renameDownLoadFileWithFileName:response.suggestedFilename filePath:downData.downLoadPath fileManager:_fileManager];
+            downData.downLoadPath = [downData.downLoadPath stringByAppendingPathComponent:downData.name];
+        }
         
-        NSString *fullPath = [downData.downLoadPath stringByAppendingPathComponent:downData.name];
         
-        NSLog(@"%@", fullPath);
-        
-        downData.outStream = [[NSOutputStream alloc] initToFileAtPath:fullPath append:YES]; //append ?
+        downData.outStream = [[NSOutputStream alloc] initToFileAtPath:downData.downLoadPath append:YES]; //append ?
         
         //打开输出流
         [downData.outStream open];
@@ -157,12 +170,15 @@
         if (![task isEqual:downData.downTask]) {
             continue ;
         }
-        [downData.outStream close];
-        downData.outStream = nil;
-        NSLog(@"didCompleteWithError");
+    
         
         if (error) {
-            downData.status = MyDownStatusFail;
+            NSLog(@"error: %@", error);
+            if (error.code == -999 || error.code == -1011) { //cancel  || timed out
+                downData.status = MyDownStatusPause;
+            } else {
+                downData.status = MyDownStatusFail;
+            }
         } else {
             downData.progress = 1;
             downData.status = MyDownStatusSuccess;
@@ -171,13 +187,17 @@
         if (self.delegate) {
             [self.delegate reloadRowWithIndex:i];
         }
+        
+        [downData.outStream close];
+        downData.outStream = nil;
+        downData.downTask = nil;
+        
         [self wirteToSandboxPlist];
     }
 }
 
 - (void)wirteToSandboxPlist {
-    //[_downDatas writeToFile:self.plistPath atomically:YES];
-    
+    //@synchronized 结构所做的事情跟锁（lock）类似：它防止不同的线程同时执行同一段代码
     @synchronized (self) {
         [NSKeyedArchiver archiveRootObject:self.downDatas toFile:self.plistPath];
     }
@@ -188,29 +208,14 @@
     return [[_fileManager attributesOfItemAtPath:filePath error:nil] fileSize];
 }
 
-- (void)renameDownLoadFileWithData:(MyDownData *)downData  {
-    
-    NSInteger i = 1;
-    NSString *goodName = downData.name;
-    while ([_fileManager fileExistsAtPath:[downData.downLoadPath stringByAppendingPathComponent:goodName]]) {
-        NSString *lastName = [goodName pathExtension];
-        NSString *firstName = [goodName stringByDeletingPathExtension];
-        firstName = [NSString stringWithFormat:@"%@(%zi)",firstName,i];
-        goodName = [firstName stringByAppendingPathExtension:lastName];
-        i++;
-    }
-    downData.name = goodName;
-}
-
-
-
-
 #pragma mark - lazy load
 
 - (NSURLSession *)session {
     if (!_session) {
+#warning _queue VS [NSOperationQueue mainQueue] 
+        //接收到通知的回调在哪个线程中调用，如果传mainQueue则通知在主线程回调，否则在子线程回调
         _queue = [[NSOperationQueue alloc] init];
-        _queue.maxConcurrentOperationCount = 3;
+        _queue.maxConcurrentOperationCount = 1;
         _session = [NSURLSession
                     sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                     delegate:self
@@ -222,8 +227,12 @@
 
 - (NSMutableArray *)downDatas {
     if (!_downDatas) {
-        self.plistPath = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"111/downDatas.plist"];
-        //_downDatas = [[NSMutableArray alloc] initWithContentsOfFile:self.plistPath];
+        NSString *downPath = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"download"];
+        if (![_fileManager fileExistsAtPath:downPath]) {
+            [_fileManager createDirectoryAtPath:downPath withIntermediateDirectories:YES attributes:nil
+                                          error:nil];
+        }
+        self.plistPath = [downPath stringByAppendingPathComponent:@"downDatas.plist"];
         _downDatas = [NSKeyedUnarchiver unarchiveObjectWithFile:self.plistPath];
         
         for (MyDownData *data in _downDatas) {
@@ -231,7 +240,6 @@
                 data.status = MyDownStatusPause;
                 data.currentSize = [self caculateFileSizeWithPath:[data.downLoadPath stringByAppendingPathComponent:data.name]];
                 data.progress = 1.0 * data.currentSize / data.totalSize;
-                
             }
             
             data.isFromDisk = YES;
